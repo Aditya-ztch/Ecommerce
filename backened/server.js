@@ -9,7 +9,9 @@ app.use(express.json());
 
 DBConnection(); //Db connection
 const UserRouter=require("./Routes/UserRouter")
+const ProductRouter=require("./Routes/ProductRouter")
 app.use("/api",UserRouter);
+app.use("/api",ProductRouter);
 
 app.listen(process.env.PORT,()=>{
     console.log(`backened is listen at port:`,process.env.PORT)

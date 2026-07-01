@@ -5,6 +5,9 @@ import SignUp from './../pages/SignUp';
 import CartProvider, { CartContext } from '../services/CartProvider';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
@@ -12,6 +15,15 @@ import { useNavigate } from 'react-router-dom';
 function NavBar() {
   const navigate=useNavigate();
   const{CartItems}=useContext(CartContext);
+  const HandleLogout=()=>{
+    if(sessionStorage.getItem('Token')){
+    sessionStorage.removeItem('Token');
+    toast.success("Logout Success")
+    navigate('/login')
+    }
+    
+
+  }
  
   
   return (
@@ -27,12 +39,25 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/product">Products</Nav.Link>
-            <Nav.Link href="/signup">SignUp</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-          
+            <NavDropdown title="Other Actions" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/signup">SignUp</NavDropdown.Item>
+              <NavDropdown.Item href="/login">
+                Login
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/add-products">Add Products</NavDropdown.Item>
+              <NavDropdown.Item href="/update-products">Update Products</NavDropdown.Item>
+              <NavDropdown.Item href="/delete-products">Delete Products</NavDropdown.Item>
+              <NavDropdown.Item href="/filter-products">Filter Products</NavDropdown.Item>
+              <NavDropdown.Item href="/users">Users</NavDropdown.Item>
+              </NavDropdown>
+              
+            
+            
+            <Nav.Link  style={{backgroundColor:'red',color:'whitesmoke',borderRadius:'5px'}} onClick={HandleLogout}>Logout</Nav.Link>
           </Nav>
         </Container>
-        
+      
+    
   
       <button   id='submit' className='btn btn-primary'style={{position:'absolute',right:'0',top:'0', width:'150px',height:'65px',fontWeight:'bolder',margin:'5px',fontSize:'larger'}} onClick={()=>{navigate('/cart')}}>
             <img
@@ -49,6 +74,7 @@ function NavBar() {
 
       
       </Navbar>
+      <ToastContainer/>
     </>
   );
 }

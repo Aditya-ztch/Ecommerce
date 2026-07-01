@@ -25,7 +25,8 @@ function Login() {
          try {
            await axios.post('http://localhost:3000/api/login',{Email:EmailRef.current.value,Password:PasswordRef.current.value}).then(res=>{
             console.log(res.data.message);
-            console.log(res.data.user);
+            sessionStorage.setItem('Token',res.data.token);
+            console.log("Token created Successfully");
             toast.success("User login successfully")
             setTimeout(()=>{
             navigate('/home');
