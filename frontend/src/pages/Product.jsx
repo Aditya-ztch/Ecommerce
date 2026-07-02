@@ -1,19 +1,50 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import{CartContext} from "../services/CartProvider"
+import { ToastContainer,toast } from "react-toastify";
+import {CartContext} from "../services/CartProvider"
+
+
 
 const Product = () => {
+  const{cart,setcart}=useContext(CartContext);
+  function AddToCart(productId){
+    const token=sessionStorage.getItem('Token');
+    const payload=JSON.parse(atob(token.split(".")[1]));
+    const uid=payload.userId;
+
+  axios.post(`http://localhost:3000/api/add-product/${uid}/${productId}`,{},{
+    headers:{
+      authorization:`Bearer ${token}`
+    }
+  }).then((response)=>{
+    toast.success(response.data.message);
+    setcart([...cart,pid]);
+  })
+  .catch((error)=>{
+    console.log(error);
+    seterror(error);
+
+  })
+
+   
+  }
+  
   const [Products, setProducts] = useState([]);
   const [loading,setloading]=useState(true);
   const [error,seterror]=useState(null);
-  const{CartItems,setCartItems,addToCart}=useContext(CartContext);
+
   // console.log(CartItems);
  
   
 
   useEffect(() => {
+    const Token=sessionStorage.getItem('Token');
     axios
-      .get('http://localhost:3000/api/products')
+      .get('http://localhost:3000/api/get-products',{
+        headers:{
+          authorization:`Bearer ${Token}`,
+        },
+      })
       .then((response) => {
         // console.log(response.data.Allproducts)
         setProducts(response.data.Allproducts);
@@ -43,7 +74,7 @@ const Product = () => {
           <div className="card-subtitle" style={{fontWeight:'bold',fontSize:'20px'}}>Rs {product.price}
             <br />
             <div style={{display:'flex',justifyContent:'center',gap:'10px'}}>
-               <button style={{borderRadius:"10px",border:'none',width:'70%',margin:'10px',backgroundColor:'#a6813d',color:'blanchedalmond'}} onClick={()=>{addToCart(product)}}  >Add to Cart</button>
+               <button style={{borderRadius:"10px",border:'none',width:'70%',margin:'10px',backgroundColor:'#a6813d',color:'blanchedalmond'}} onClick={()=>{AddToCart(product._id)}}  >Add to Cart</button>
                
             </div>
            
@@ -53,6 +84,7 @@ const Product = () => {
 
         </div>
       ))}
+      <ToastContainer/>
     </div>
   );
 };

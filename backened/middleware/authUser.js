@@ -8,7 +8,7 @@ const verifiedUser=async(req,res,next)=>{
             return res.status(401).json({message:"No Token Found"});
 
         }
-        console.log(token);
+       
         const decoded=await jwt.verify(token,process.env.secret_key);
         next();
         

@@ -11,15 +11,18 @@ import CartProvider from './services/CartProvider.jsx';
 import Cart from './pages/Cart.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PageNotFound from './components/PageNotFound.jsx';
+import SessionTimer from './components/SessionTimer.jsx';
 
 
 
 
 const App = () => {
+  
   return(
     <div>
       <CartProvider>
       <BrowserRouter>
+      <SessionTimer/>
       
        <NavBar />
        <Routes>
