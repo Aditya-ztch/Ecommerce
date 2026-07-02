@@ -10,8 +10,10 @@ app.use(express.json());
 DBConnection(); //Db connection
 const UserRouter=require("./Routes/UserRouter")
 const ProductRouter=require("./Routes/ProductRouter")
+const CartRouter=require("./Routes/CartRouter")
 app.use("/api",UserRouter);
 app.use("/api",ProductRouter);
+app.use("/api",CartRouter);
 
 app.listen(process.env.PORT,()=>{
     console.log(`backened is listen at port:`,process.env.PORT)
