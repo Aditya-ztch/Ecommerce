@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import axios from "axios";
 import { useEffect, useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+
 import {CartContext} from "../services/CartProvider"
 
 function NavBar() {
@@ -20,7 +20,7 @@ function NavBar() {
  
   const HandleLogout = () => {
     sessionStorage.removeItem("Token");
-    toast.success("Logout Success");
+   
     navigate("/login");
   };
 
@@ -125,7 +125,7 @@ function NavBar() {
         )}
       </Navbar>
 
-      <ToastContainer />
+      
     </>
   );
 }

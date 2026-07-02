@@ -6,19 +6,22 @@ import {CartContext} from "../services/CartProvider"
 
 
 const Product = () => {
-  const{cart,setcart}=useContext(CartContext);
-  function AddToCart(productId){
+  const{cart,setcart,fetchCartQuantity,quant}=useContext(CartContext);
+   
+function AddToCart(productId){
     const token=sessionStorage.getItem('Token');
     const payload=JSON.parse(atob(token.split(".")[1]));
     const uid=payload.userId;
+    const pid=productId;
 
   axios.post(`http://localhost:3000/api/add-product/${uid}/${productId}`,{},{
     headers:{
       authorization:`Bearer ${token}`
     }
   }).then((response)=>{
-    toast.success(response.data.message);
+    // toast.success(response.data.message);
     setcart([...cart,pid]);
+    toast.success("Product Added Successfully");
   })
   .catch((error)=>{
     console.log(error);
@@ -62,6 +65,7 @@ const Product = () => {
   
 
   return (
+    <>
     <div style={{backgroundColor:'#F1E2D1',display:'grid',gridTemplateColumns:'auto auto auto  ', gridAutoColumns:'250px',gap:'50px'}}>
       {Products.map((product) => (
         <div className="card" key={product._id} style={{textAlign:'center',margin:'10px',backgroundColor:'#810B38',color:'#F7F1DE',borderRadius:'20px'}}>
@@ -84,8 +88,10 @@ const Product = () => {
 
         </div>
       ))}
-      <ToastContainer/>
+      
     </div>
+    <ToastContainer/>
+    </>
   );
 };
 
