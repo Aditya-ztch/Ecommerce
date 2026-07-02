@@ -1,16 +1,17 @@
 const express=require('express');
 const router=express.Router();
+const verifiedUser=require("../middleware/authUser")
 const{
     AddProduct,GetProducts,
     DeleteProduct,UpdateProduct,
     FilterProductOnPrice,
     FilterProductOnRating
 }=require("../Controller/Products")
-router.get("/get-products",GetProducts);
-router.post("/add-product",AddProduct);
-router.delete("/delete-product/:id",DeleteProduct);
-router.put("/update-product/:id",UpdateProduct);
-router.get("/product-price",FilterProductOnPrice);
-router.get("/product-rating",FilterProductOnRating);
+router.get("/get-products",verifiedUser,GetProducts);
+router.post("/add-product",verifiedUser,AddProduct);
+router.delete("/delete-product/:id",verifiedUser,DeleteProduct);
+router.put("/update-product/:id",verifiedUser,UpdateProduct);
+router.get("/product-price",verifiedUser,FilterProductOnPrice);
+router.get("/product-rating",verifiedUser,FilterProductOnRating);
 
 module.exports=router;

@@ -9,7 +9,7 @@ const Login=async(req,res)=>{
            const token=await jwt.sign({
                 userId:user._id,email:user.Email
             },process.env.secret_key,{
-                expiresIn:'10min'
+                expiresIn:'20min'
             })
 
         if(ComparedPassword){
