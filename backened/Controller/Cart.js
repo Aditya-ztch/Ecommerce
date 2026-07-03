@@ -80,7 +80,7 @@ const DeleteCartProduct=async(req,res)=>{
     const productId=req.query.product;
     try {
         const cartDetails=await cartModel.findOne({userId});
-        console.log(cartDetails);
+     
       
         const Product=cartDetails.products.find(item=>item.productId.toString()===productId);
         

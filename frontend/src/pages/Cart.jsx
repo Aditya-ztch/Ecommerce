@@ -99,7 +99,7 @@ const Cart = () => {
           
             </div>
               <div >
-          <Button className='btn btn-danger' onClick={()=>{HandleDelete(items.product._id)}}>Delete</Button>
+          <Button className='btn btn-danger' className='m-2' onClick={()=>{HandleDelete(items.product._id)}}>Delete</Button>
             </div>
            
           

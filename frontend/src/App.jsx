@@ -12,6 +12,7 @@ import Cart from './pages/Cart.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PageNotFound from './components/PageNotFound.jsx';
 import SessionTimer from './components/SessionTimer.jsx';
+import AddProduct from './pages/AddProduct';
 
 
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp/>} />
         <Route path='/product' element={<ProtectedRoute> <Product/></ProtectedRoute>} />
         <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
+        <Route path='/add-products' element={<ProtectedRoute><AddProduct /></ProtectedRoute>}/>
         <Route path='*' element={<PageNotFound/>} />
 
        </Routes >
