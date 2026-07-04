@@ -13,6 +13,8 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PageNotFound from './components/PageNotFound.jsx';
 import SessionTimer from './components/SessionTimer.jsx';
 import AddProduct from './pages/AddProduct';
+import UpdateProduct from './pages/UpdateProduct.jsx';
+import DeleteProduct from './pages/DeleteProduct.jsx';
 
 
 
@@ -34,6 +36,8 @@ const App = () => {
         <Route path='/product' element={<ProtectedRoute> <Product/></ProtectedRoute>} />
         <Route path='/cart' element={<ProtectedRoute><Cart/></ProtectedRoute>}/>
         <Route path='/add-products' element={<ProtectedRoute><AddProduct /></ProtectedRoute>}/>
+        <Route path='/update-products' element={<ProtectedRoute><UpdateProduct /></ProtectedRoute>}/>
+        <Route path="/delete-products" element={<ProtectedRoute><DeleteProduct/></ProtectedRoute>}/>
         <Route path='*' element={<PageNotFound/>} />
 
        </Routes >

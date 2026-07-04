@@ -78,7 +78,18 @@ const FilterProductOnRating=async(req,res)=>{
         
     }
 }
+// getting Product based on id
+const getProductbyId=async(req,res)=>{
+    try {
+        const Product =await Products.findById(req.params.pid);
+        res.status(200).json({message:"Product fetched Successfully",Product});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"failed to fetch product"})
+    }
+
+}
 module.exports={GetProducts,
     AddProduct,DeleteProduct,
     UpdateProduct,FilterProductOnPrice,
-    FilterProductOnRating};
+    FilterProductOnRating,getProductbyId};
