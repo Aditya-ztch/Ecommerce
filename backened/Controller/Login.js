@@ -24,4 +24,14 @@ const Login=async(req,res)=>{
         
     }
 }
-module.exports=Login;
+//fetching user details
+const User=async(req,res)=>{
+    try {
+        const userDetails=await users.find();
+        res.status(200).json({message:"User Details fetched successfully",userDetails});
+    } catch (error) {
+        res.status(500).json({message:"Unable to fetch Use Details",userDetails});
+        
+    }
+}
+module.exports={Login,User};
