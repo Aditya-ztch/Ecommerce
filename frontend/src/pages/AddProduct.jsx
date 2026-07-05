@@ -55,8 +55,8 @@ const AddProduct = () => {
   };
   return (
     <div style={{backgroundColor:'#F1E2D1',height:'100dvh',width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-    <div style={{backgroundColor:'#b6fa9a',display:'flex',flexDirection:'column',width:'80%',height:'60%',padding:'2rem',borderRadius:'10px 20px'}}>
-        <h2 style={{alignSelf:'center'}}>Add Product</h2>
+    <div style={{backgroundColor:'#b2926d',color:'#810B38',display:'flex',flexDirection:'column',width:'80%',height:'auto',padding:'2rem',borderRadius:'10px 20px'}}>
+        <h2 style={{alignSelf:'center',textDecoration:'underline'}}>Add Product</h2>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -67,6 +67,7 @@ const AddProduct = () => {
             placeholder="Product name"
             name='name'
             onChange={handleChange}
+            style={{color:'#810B38'}}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
@@ -81,6 +82,7 @@ const AddProduct = () => {
             placeholder="Price"
             name='price'
             onChange={handleChange}
+             style={{color:'#810B38'}}
             
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -99,6 +101,7 @@ const AddProduct = () => {
               name='imageUrl'
               onChange={handleChange}
               required
+               style={{color:'#810B38'}}
             />
 
             <Form.Control.Feedback type="invalid">
@@ -109,8 +112,8 @@ const AddProduct = () => {
       </Row>
     <Row className="mb-3">
         <Form.Group  md="4" style={{height:'40px'}} controlId="validationCustom03">
-           <label className="col" htmlFor="category"  style={{width:'20%'}}>Choose a course:</label>
-            <select name="courses" id="category" name='category' style={{width:'40%',height:'90%',borderRadius:'10px',border:'none'}} onChange={handleChange}>
+           <label className="col" htmlFor="category"  style={{width:'20%'}} >Choose a course:</label>
+            <select name="courses" id="category" name='category' style={{width:'40%',height:'90%',borderRadius:'10px',border:'none',color:'#810B38'}} onChange={handleChange}>
             <option value=" " >----select the category----</option>
             <option value="electronics">Electronics</option>
             <option value="fashion" >Fashion</option>
@@ -126,21 +129,21 @@ const AddProduct = () => {
       <Row className="mb-3">
         <Form.Group as={Col} md="6" controlId="validationCustom04">
           <Form.Label>Brand</Form.Label>
-          <Form.Control type="text" placeholder="brand" required name='brand' onChange={handleChange} />
+          <Form.Control type="text" placeholder="brand" required name='brand' onChange={handleChange}  style={{color:'#810B38'}} />
           <Form.Control.Feedback type="invalid">
             Please provide brand.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom05">
           <Form.Label>Rating</Form.Label>
-          <Form.Control type="text" placeholder="Ratings eg.'4.5'" onChange={handleChange} name='rating' required />
+          <Form.Control type="text" placeholder="Ratings eg.'4.5'" onChange={handleChange} name='rating' required   style={{color:'#810B38'}}/>
           <Form.Control.Feedback type="invalid">
             Please provide a ratings.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom06">
           <Form.Label>Stock</Form.Label>
-          <Form.Control type="number" placeholder="Stock amount" name='stock' required onChange={handleChange} />
+          <Form.Control type="number" placeholder="Stock amount" name='stock' required onChange={handleChange}   style={{color:'#810B38'}}/>
           <Form.Control.Feedback type="invalid">
             Please provid Stock amount.
           </Form.Control.Feedback>
@@ -148,14 +151,14 @@ const AddProduct = () => {
         
         <Form.Group as={Col} md="3"  controlId="validationCustom07">
           <Form.Label>Description</Form.Label>
-          <Form.Control type="text" placeholder="Description"name='description' onChange={handleChange} required />
+          <Form.Control type="text" placeholder="Description"name='description' onChange={handleChange} required   style={{color:'#810B38'}}/>
           <Form.Control.Feedback type="invalid">
             Please provide a Description.
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
     <div style={{display:'flex',justifyContent:'center'}}>
-        <Button type="submit">Submit form</Button>
+        <Button type="submit" >Submit form</Button>
     </div>
       
     </Form>
